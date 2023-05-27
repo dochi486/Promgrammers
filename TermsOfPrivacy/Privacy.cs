@@ -41,6 +41,13 @@ namespace TermsOfPrivacy
                 }
             }
 
+
+            var date = today.Split(".");
+            var year = date[0];
+            var month = date[1];
+            var day = date[2];
+
+
             // privacies 개인정보
             for (int i = 0; i < privacies.Length; i++)
             {
@@ -53,17 +60,28 @@ namespace TermsOfPrivacy
                 else
                 {
                     privacyTerms.Add(privacy[1], privacy[0]);
+                    int.TryParse(year, out int yearResult);
+                    int.TryParse(privacyTerms[privacy[1]].Split(".")[0], out int privacyYear);
+                    var yearSubtract = yearResult - privacyYear;
 
+                    int.TryParse(month, out int monthReseult);
+                    int.TryParse(privacyTerms[privacy[1]].Split(".")[1], out int privacyMonth);
+
+                    var monthSubtract = monthReseult - privacyMonth;
+
+                    for (int j = 0; j < privacy[1].Length; j++)
+                    {
+                        //int.TryParse(date[i][j].ToString, out int dateReseult);
+                        int.TryParse(privacyTerms[privacy[1]].Split(".")[2], out int privacyDate);
+
+                        var dateSubtract = dateReseult - privacyDate;
+                    }
 
                 }
             }
 
             // today
-           
-            var date = today.Split(".");
-            var year = date[0];
-            var month = date[1];
-            var day = date[2];
+ 
             
 
             //privacyTerms 날짜 분해할지 고민
@@ -74,8 +92,8 @@ namespace TermsOfPrivacy
                 
                 // 5 -06
                 // 07 - 12 
-                // 
-                year - privacyTerms[termsConditions[]
+                // 2 -3
+              
 
             }
 
