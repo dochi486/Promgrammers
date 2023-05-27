@@ -22,21 +22,18 @@ namespace Promgrammers
         {
             int[] answer = new int[] { };
 
-            // report를 신고자, 불량 유저로 나눈 컨테이너
             Dictionary<string, List<string>> userContainer = new Dictionary<string, List<string>>();
-            // 신고 당한 모든 유저 목록
-            List<string> allReportedUser = new List<string>();
+            Dictionary<string, bool> allReportedUser = new Dictionary<string, bool>();
 
-            // id_list의 유저들이 불량 유저를 신고한 내역 report에서
-            foreach (var item in report)
+            for (int i = 0; i < report.Length; i++)
             {
-                // 신고자 이름과 불량 유저 이름은 화이트스페이스로 구분되어 있고
-                var users = item.Split(" ");
+                var users = report[i].Split(" ");
                 if (!userContainer.ContainsKey(users[0]))
                 {
                     userContainer[users[0]] = new List<string>();
                 }
 
+                // 중복 체크
                 if (userContainer[users[0]].Contains(users[1]))
                 {
                     continue;
@@ -44,22 +41,23 @@ namespace Promgrammers
                 else
                 {
                     userContainer[users[0]].Add(users[1]);
-                    allReportedUser.Add(users[1]);
+                    allReportedUser.Add(users[1], true);
                 }
             }
+
 
             // k번 이상 신고 받은 유저는 활동이 정지된다.
             List<string> blockedUser = new List<string>();
 
             // 정지 당한 유저만 따로 리스트에 정리...
-            foreach (var item in allReportedUser)
-            {
-                var count = allReportedUser.FindAll(x => x.Contains(item));
-                if (count.Count >= k)
-                {
-                    blockedUser.Add(item);
-                }
-            }
+            //for (int i = 0; i < allReportedUser.Count; i++)
+            //{
+            //    var count = allReportedUser.FindAll(x => x.Contains(allReportedUser[i]));
+            //    if (count.Count >= k)
+            //    {
+            //        blockedUser.Add(allReportedUser[i]);
+            //    }
+            //} 
 
             // 알림 메일을 발송한 횟수를 리턴한다.
 
@@ -99,24 +97,26 @@ namespace Promgrammers
             List<int> answerList = new List<int>();
             int mailCount = 0;
 
-            // 전체 유저 중에서
-            foreach (var user in id_list)
+
+
+            for (int i = 0; i < id_list.Length; i++)
             {
                 mailCount = 0;
 
                 // 정지 당한 목록 순회
-                for (int i = 0; i < sortedBlockList.Count; i++)
+                for (int j = 0; j < sortedBlockList.Count; j++)
                 {
                     // reporter가 신고한 사람이 정지 당했는지 확인
-                    if (userContainer.ContainsKey(user))
+                    if (userContainer.ContainsKey(id_list[i]))
                     {
-                        var element = userContainer[user].Find(x => x == sortedBlockList[i]);
-                        if (element != null) 
+                        var element = userContainer[id_list[i]].Find(x => x == sortedBlockList[j]);
+                        if (element != null)
                             mailCount++;
                     }
                 }
                 answerList.Add(mailCount);
             }
+
             return answerList.ToArray();
         }
     }
