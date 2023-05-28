@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrivacyTerms", "PrivacyTerm
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TermsOfPrivacy", "TermsOfPrivacy\TermsOfPrivacy.csproj", "{0B08DD44-2499-4EF1-9F58-4966B4818C31}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrivacyTermSave", "PrivacyTermSave\PrivacyTermSave.csproj", "{3398C001-8EBB-4882-9BC0-E8E070276519}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrivacyTermSave", "PrivacyTermSave\PrivacyTermSave.csproj", "{3398C001-8EBB-4882-9BC0-E8E070276519}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Run", "Run\Run.csproj", "{FACE75F4-CEB3-4693-87EE-9B600F3A18D0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{3398C001-8EBB-4882-9BC0-E8E070276519}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3398C001-8EBB-4882-9BC0-E8E070276519}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3398C001-8EBB-4882-9BC0-E8E070276519}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FACE75F4-CEB3-4693-87EE-9B600F3A18D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FACE75F4-CEB3-4693-87EE-9B600F3A18D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FACE75F4-CEB3-4693-87EE-9B600F3A18D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FACE75F4-CEB3-4693-87EE-9B600F3A18D0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
