@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Run
 {
@@ -20,12 +19,13 @@ namespace Run
     {
         public string[] solution(string[] players, string[] callings)
         {
-            Dictionary<int, string> playerRanks = new Dictionary<int, string>();
+            Dictionary<string, int> playerRanks = new Dictionary<string, int>();
 
             var tempLength = players.Length;
             for (int j = 0; j < tempLength; j++)
             {
-                playerRanks.Add(j, players[j]);
+                // 순위랑 선수 이름을 맵에 넣어주고 
+                playerRanks.Add(players[j], j);
 
                 // 플레이어 순위가 담긴 players 배열의 요소 중에서
                 //for (int i = 1; i < players.Length; i++)
@@ -41,7 +41,48 @@ namespace Run
                 //}
             }
 
+            foreach (var item in callings)
+            {
+                if (playerRanks.ContainsKey(item))
+                {
+                    playerRanks[item]--;
+                }
+
+
+
+                // 딕셔너리 수정... 
+            }
+
+
+
             return players;
         }
     }
+
+
+    //public class Solution
+    //{
+    //    public string[] solution(string[] players, string[] callings)
+    //    {
+    //        string[] answer = new string[] { };
+    //        Dictionary<string, int> dict = new Dictionary<string, int>();
+
+    //        for (int i = 0; i < players.Length; i++)
+    //        {
+    //            dict[players[i]] = i;
+    //        }
+
+    //        foreach (string c in callings)
+    //        {
+    //            int index = dict[c];
+    //            dict[c]--;
+    //            dict[players[index - 1]]++;
+    //            string temp = players[index];
+    //            players[index] = players[index - 1];
+    //            players[index - 1] = temp;
+    //        }
+
+    //        return players;
+    //    }
+    //}
 }
