@@ -88,7 +88,7 @@ namespace ParkWalk
                                     toMove = 0;
                                     break;
                                 }
-                            } while (toMove > move);
+                            } while (toMove < move);
 
                             if (toMove == 0)
                                 continue;
@@ -135,8 +135,8 @@ namespace ParkWalk
                             // 가는 길에 장애물을 마주치는지 확인
                             do
                             {
-                                if (parkBoard[startY + toMove, startX] != "X")
-                                    toMove++;
+                                if (parkBoard[startY - toMove, startX] != "X")
+                                    toMove--;
                                 else
                                 {
                                     toMove = 0;
