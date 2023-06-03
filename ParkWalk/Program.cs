@@ -34,7 +34,6 @@ namespace ParkWalk
             // 보드의 높이는 park배열의 요소 수와 같음
 
             // park 배열을 먼저 보드로 만들어 놓고
-            int tempLength = park.Length;
             for (int j = 0; j < width; j++)
             {
                 for (int i = 0; i < height; i++)
@@ -93,7 +92,7 @@ namespace ParkWalk
                             if (toMove == 0)
                                 continue;
 
-                            if (parkBoard[startY, startX + move] != "X" || parkBoard[startY, startX + move] != "S")
+                            if (parkBoard[startY, startX + move] != "X")
                             {
                                 startX += move;
                             }
@@ -120,7 +119,7 @@ namespace ParkWalk
                             if (toMove == 0)
                                 continue;
 
-                            if (parkBoard[startY, startX - move] != "X" || parkBoard[startY, startX - move] != "S")
+                            if (parkBoard[startY, startX - move] != "X")
                             {
                                 startX -= move;
                             }
@@ -147,7 +146,7 @@ namespace ParkWalk
                             if (toMove == 0)
                                 continue;
 
-                            if (parkBoard[startY - move, startX] != "X" || parkBoard[startY - move, startX] != "S")
+                            if (parkBoard[startY - move, startX] != "X")
                             {
                                 startY -= move;
                             }
@@ -174,7 +173,7 @@ namespace ParkWalk
                             if (toMove == 0)
                                 continue;
 
-                            if (parkBoard[startY + move, startX] != "X" || parkBoard[startY + move, startX] != "S")
+                            if (parkBoard[startY + move, startX] != "X")
                             {
                                 startY += move;
                             }
