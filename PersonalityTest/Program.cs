@@ -48,13 +48,13 @@ namespace PersonalityTest
                 switch (choices[t])
                 {
                     case 1:
-                        points[survey[t][0].ToString()]++;
+                        points[survey[t][0].ToString()] += 3;
                         break;
                     case 2:
                         points[survey[t][0].ToString()] += 2;
                         break;
                     case 3:
-                        points[survey[t][0].ToString()] += 3;
+                        points[survey[t][0].ToString()]++;
                         break;
                     case 4:
                         break;
