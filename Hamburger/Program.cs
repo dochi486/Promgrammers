@@ -21,6 +21,9 @@ namespace Hamburger
             int answer = 0;
             bool isConsecutive = false;
 
+            if (ingredient.Length < 4) 
+                return 0;
+
             // ingredients 배열에서 1, 2, 3이 연속으로 있을 때만 포장을해서 answer의 카운트 증가시킨다.
             for (int i = 0; i < ingredient.Length - 1; i++)
             {
