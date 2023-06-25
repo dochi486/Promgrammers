@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace PE
@@ -10,9 +9,9 @@ namespace PE
         {
             Console.WriteLine("Hello World!");
             Solution solution = new Solution();
-            int[] lost = new int[] { 2, 4 };
-            int[] reserve = new int[] { 3 };
-            solution.solution(5, lost, reserve);
+            int[] lost = new int[] { 1, 2 };
+            int[] reserve = new int[] { 2, 3 };
+            solution.solution(3, lost, reserve);
         }
     }
 
@@ -32,39 +31,23 @@ namespace PE
                 return 0;
 
             // lost에는 중복되는 번호가 없다.
-            var distincted = lost.Distinct();
-            List<int> newLost = new List<int>();
-            newLost = distincted.ToList();
+            var newLost = lost.Except(reserve).OrderBy(x => x).ToList();
+            var newReserve = reserve.Except(lost).OrderBy(x => x).ToList();
 
-            List<int> newReserve = new List<int>();
-            newReserve = reserve.ToList();
 
             // reserve에 있는 번호만 사용 가능
-            for (int i = 0; i < newReserve.Count; i++)
+            for (int j = 0; j < newLost.Count; j++)
             {
-                if (newLost.Count == 0)
-                    break;
 
-                for (int j = 0; j < newLost.Count; j++)
+                if (newReserve.Contains(newLost[j] - 1))
                 {
-                    if (newReserve.Count == 0)
-                        break;
-
-                    if (newLost.Contains(newReserve[i]))
-                    {
-                        continue;
-                    }
-
-                    if (newReserve.Contains(newLost[j] + 1))
-                    {
-                        answer++;
-                        newReserve.Remove(newLost[j] + 1);
-                    }
-                    else if (newReserve.Contains(newLost[j] - 1))
-                    {
-                        answer++;
-                        newReserve.Remove(newLost[j] - 1);
-                    }
+                    answer++;
+                    newReserve.Remove(newLost[j] - 1);
+                }
+                else if (newReserve.Contains(newLost[j] + 1))
+                {
+                    answer++;
+                    newReserve.Remove(newLost[j] + 1);
                 }
             }
 
