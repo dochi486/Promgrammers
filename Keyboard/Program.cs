@@ -14,6 +14,7 @@ namespace Keyboard
         }
     }
 
+
     public class Solution
     {
         public int[] solution(string[] keymap, string[] targets)
