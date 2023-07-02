@@ -10,21 +10,115 @@ namespace Hamburger
         {
             Console.WriteLine("Hello World!");
             Solution solution = new Solution();
-            int[] ingredients = { 1, 3, 2, 4, 1 ,2};
+            int[] ingredients = { 2, 1, 1, 2, 3, 1, 2, 3, 1 };
             solution.solution(ingredients);
         }
     }
 
     public class Solution
     {
+        //public int solution(int[] ingredients)
+        //{
+        //    int answer = 0;
+
+        //    Stack<int> newIngredients = new Stack<int>();
+
+        //    // 인자로 받은 ingredients를 스택에 복사하고
+        //    foreach (var ingredient in ingredients)
+        //    {
+        //        newIngredients.Push(ingredient);
+        //    }
+
+        //    int[] ingredientOrder = new int[] { 1, 2,3, 1 };
+        //    Stack<int> ingredientStack = new Stack<int>(ingredientOrder);
+        //    Stack<int> cloneIngredientStack = new Stack<int>();
+        //    Stack<int> hamburgerStack = new Stack<int>();
+
+        //    Stack<int> leftIngredients = new Stack<int>();
+
+        //    do
+        //    {
+        //        // newIngredient 스택의 맨위 원소를 확인해서 
+        //        // 햄버거재료 스택의 맨위 원소와 같다면
+        //        // newIngredient의 원소를 팝해서 햄버거스택에 쌓는다. 
+        //        if (ingredientStack.Count == 0)
+        //        {
+        //            if (newIngredients.Peek() == cloneIngredientStack.Peek())
+        //            {
+        //                hamburgerStack.Push(newIngredients.Peek());
+        //                newIngredients.Pop();
+        //            }
+        //            else
+        //            {
+        //                // 같지 않다면 팝해서 다른 스택 하나에 또 쌓아둔다.
+        //                leftIngredients.Push(newIngredients.Pop());
+        //            }
+        //        }
+        //        else
+        //        {
+        //            if (newIngredients.Peek() == ingredientStack.Peek())
+        //            {
+        //                hamburgerStack.Push(newIngredients.Peek());
+        //                newIngredients.Pop();
+        //            }
+        //            else
+        //            {
+        //                // 같지 않다면 팝해서 다른 스택 하나에 또 쌓아둔다.
+        //                leftIngredients.Push(newIngredients.Pop());
+        //            }
+        //            // newIngredient의 원소 카운트가 양수일동안 반복
+        //            cloneIngredientStack.Push(ingredientStack.Pop());
+        //        }
+
+        //    } while (newIngredients.Count > 0);
+
+        //    do
+        //    {
+        //        if (ingredientStack.Count == 0)
+        //        {
+        //            if (leftIngredients.Peek() == cloneIngredientStack.Peek())
+        //            {
+        //                hamburgerStack.Push(leftIngredients.Peek());
+        //                leftIngredients.Pop();
+        //            }
+        //            else
+        //            {
+        //                // 같지 않다면 팝해서 다른 스택 하나에 또 쌓아둔다.
+        //                newIngredients.Push(leftIngredients.Pop());
+        //            }
+        //        }
+        //        else
+        //        {
+        //            if (leftIngredients.Peek() == ingredientStack.Peek())
+        //            {
+        //                hamburgerStack.Push(leftIngredients.Peek());
+        //                leftIngredients.Pop();
+        //            }
+        //            else
+        //            {
+        //                // 같지 않다면 팝해서 다른 스택 하나에 또 쌓아둔다.
+        //                newIngredients.Push(leftIngredients.Pop());
+        //            }
+        //            // newIngredient의 원소 카운트가 양수일 동안 반복
+        //            ingredientStack.Push(cloneIngredientStack.Pop());
+        //        }
+
+        //    } while (leftIngredients.Count > 0);
+
+
+        //    answer = hamburgerStack.Count / 4;
+
+        //    return answer;
+        //}
+
         public int solution(int[] ingredients)
         {
             int answer = 0;
 
-            var isBread       = false;
-            var isLettuce     = false;
-            var isPatty       = false;
-            var isTopBread    = false;
+            var isBread = false;
+            var isLettuce = false;
+            var isPatty = false;
+            var isTopBread = false;
             var firstBreadIdx = 0;
 
             var newIngredients = ingredients.ToList();
@@ -77,7 +171,8 @@ namespace Hamburger
                     isPatty = false;
                     isTopBread = false;
 
-                    if(newIngredients.Count > 4)
+                    // firstBreadIdx로부터 4 범위 값이 있는지 확인해야함
+                    if (newIngredients.GetRange(firstBreadIdx, 4).Count >= 4)
                         newIngredients.RemoveRange(firstBreadIdx, 4);
                 }
             }
