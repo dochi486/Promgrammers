@@ -54,7 +54,6 @@ namespace Keyboard
                         {
                             answer[k] = -1;
                         }
-
                     }
                 }
             }

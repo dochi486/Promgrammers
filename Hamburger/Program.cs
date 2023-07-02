@@ -10,7 +10,7 @@ namespace Hamburger
         {
             Console.WriteLine("Hello World!");
             Solution solution = new Solution();
-            int[] ingredients = { 2, 1, 1, 2, 3, 1, 2, 3, 1 };
+            int[] ingredients = { 1, 1, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1 };
             solution.solution(ingredients);
         }
     }
@@ -161,19 +161,19 @@ namespace Hamburger
                             }
                             break;
                     }
-                }
 
-                if (isBread && isLettuce && isPatty && isTopBread)
-                {
-                    answer++;
-                    isBread = false;
-                    isLettuce = false;
-                    isPatty = false;
-                    isTopBread = false;
+                    if (isBread && isLettuce && isPatty && isTopBread)
+                    {
+                        answer++;
+                        isBread = false;
+                        isLettuce = false;
+                        isPatty = false;
+                        isTopBread = false;
 
-                    // firstBreadIdx로부터 4 범위 값이 있는지 확인해야함
-                    if (newIngredients.GetRange(firstBreadIdx, 4).Count >= 4)
-                        newIngredients.RemoveRange(firstBreadIdx, 4);
+                        // firstBreadIdx로부터 4 범위 값이 있는지 확인해야함
+                        if (newIngredients.Count - firstBreadIdx > 4)
+                            newIngredients.RemoveRange(firstBreadIdx, 4);
+                    }
                 }
             }
             return answer;

@@ -10,7 +10,7 @@ namespace SecretKey
         {
             Console.WriteLine("Hello World!");
             var solution = new Solution();
-            solution.solution("aefdw", "wex", 8);
+            solution.solution("zzzzz", "a", 1);
         }
     }
 
@@ -31,15 +31,16 @@ namespace SecretKey
                 var sFound = newAbcList.Find(x => x == t);
                 var sFoundIdx = newAbcList.IndexOf(sFound);
 
-                if (sFound > 0 && !char.IsWhiteSpace(sFound))
+                if (sFound > 0 && sFound != '\0')
                 {
-                    if (newAbcList.Count <= sFoundIdx + index)
+                    if ((sFoundIdx + index) - newAbcList.Count < newAbcList.Count)
                     {
                         answer += newAbcList[(sFoundIdx + index) - newAbcList.Count];
                     }
                     else
                     {
-                        answer += newAbcList[sFoundIdx + index];
+                        if(sFoundIdx + index < newAbcList.Count)
+                            answer += newAbcList[sFoundIdx + index];
                     }
                 }
             }
