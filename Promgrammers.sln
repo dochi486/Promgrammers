@@ -21,11 +21,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonalityTest", "Personal
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hamburger", "Hamburger\Hamburger.csproj", "{E791FFD3-6108-4ED8-884D-3BEAF44F849D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PE", "PE\PE.csproj", "{94A9FF3B-0D38-4218-9775-94543C3E4D47}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PE", "PE\PE.csproj", "{94A9FF3B-0D38-4218-9775-94543C3E4D47}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Keyboard", "Keyboard\Keyboard.csproj", "{935E6696-1EC7-4FB5-9736-14C3CEB09339}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Keyboard", "Keyboard\Keyboard.csproj", "{935E6696-1EC7-4FB5-9736-14C3CEB09339}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2016", "2016\2016.csproj", "{7C0D9C49-630E-48EF-A6F9-7945AFD4E17F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "2016", "2016\2016.csproj", "{7C0D9C49-630E-48EF-A6F9-7945AFD4E17F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecretKey", "SecretKey\SecretKey.csproj", "{0EAA22D4-3D21-40E2-9850-7EE31CD991F8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,6 +83,10 @@ Global
 		{7C0D9C49-630E-48EF-A6F9-7945AFD4E17F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C0D9C49-630E-48EF-A6F9-7945AFD4E17F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7C0D9C49-630E-48EF-A6F9-7945AFD4E17F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0EAA22D4-3D21-40E2-9850-7EE31CD991F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EAA22D4-3D21-40E2-9850-7EE31CD991F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0EAA22D4-3D21-40E2-9850-7EE31CD991F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0EAA22D4-3D21-40E2-9850-7EE31CD991F8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

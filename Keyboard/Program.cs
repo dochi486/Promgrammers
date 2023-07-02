@@ -4,13 +4,13 @@ using System.Linq;
 
 namespace Keyboard
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            Solution solution = new Solution();
-            solution.solution(new string[] { "ABACD", "BCEFD" }, new string[] { "ABCD","AABB" });
+            var solution = new Solution();
+            solution.solution(new[] { "ABACD", "BCEFD" }, new[] { "ABCD", "AABB" });
         }
     }
 
@@ -29,23 +29,20 @@ namespace Keyboard
 
             var keyList = keymap.ToList();
 
-            // targets에 있는 char를 keymap에서 찾아서 (가장 가까운 걸로)
-            for (int i = 0; i < targets.Length; i++)
-            {
-                for (int j = 0; j < targets[i].Length; j++)
+            for (var k = 0; k < keyList.Count; k++)
+                // targets에 있는 char를 keymap에서 찾아서 (가장 가까운 걸로)
+            for (var i = 0; i < targets.Length; i++)
+            for (var j = 0; j < targets[i].Length; j++)
+                if (false == keyList[k].Contains(targets[i][j]))
                 {
-                    if(false == keyList.Contains(targets[i][j].ToString()))
-                    {
-                        answerList.Add(-1);
-                        break;
-                    }
-                    else
-                    {
-                        // 몇 번째 인덱스인지 받아서 answer에 저장
-                        answerList.Add(keyList.IndexOf(targets[i][j].ToString()));
-                    }
+                    answerList.Add(-1);
+                    break;
                 }
-            }
+                else
+                {
+                    // 몇 번째 인덱스인지 받아서 answer에 저장
+                    answerList.Add(keyList[k].IndexOf(targets[i][j]) + 1);
+                }
 
             return answerList.ToArray();
         }
