@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Hamburger
 {
@@ -9,44 +10,102 @@ namespace Hamburger
         {
             Console.WriteLine("Hello World!");
             Solution solution = new Solution();
-            int[] ingredients = { 2, 1, 1, 2, 3, 1, 2, 3, 1 };
+            int[] ingredients = { 1, 3, 2, 4, 1 ,2};
             solution.solution(ingredients);
         }
     }
 
     public class Solution
     {
-        public int solution(int[] ingredient)
+        public int solution(int[] ingredients)
         {
             int answer = 0;
-            bool isConsecutive = false;
 
-            if (ingredient.Length < 4) 
-                return 0;
+            bool isBread = false;
+            bool isLettuce = false;
+            bool isPatty = false;
+            bool isTopBread = false;
+            int firstBreadIdx = 0;
 
-            // ingredients 배열에서 1, 2, 3이 연속으로 있을 때만 포장을해서 answer의 카운트 증가시킨다.
-            for (int i = 0; i < ingredient.Length - 1; i++)
+            var newIngredients = ingredients.ToList();
+
+            foreach (var item in ingredients)
             {
-                // 두 수가 연속일 때
-                if (isConsecutive)
+                for (int i = 1; i <= newIngredients.Count - 1; i++)
                 {
-                    // 다시 한 번 더 검사
-                    if (ingredient[i] + 1 == ingredient[i + 1])
-                        answer++;
+                    // 1, 2, 3, 1 이 연속으로 있으면
+                    switch (newIngredients[i])
+                    {
+                        case 1:
+                            if (newIngredients[i - 1] == 3)
+                            {
+                                isTopBread = true;
+                            }
+                            else
+                            {
+                                isBread = true;
+                                firstBreadIdx = i;
+                            }
+                            break;
+                        case 2:
+                            if (newIngredients[i - 1] == 1)
+                            {
+                                isLettuce = true;
+                            }
+                            break;
+                        case 3:
+                            if (newIngredients[i - 1] == 2)
+                            {
+                                isPatty = true;
+                            }
+                            break;
+                    }
                 }
 
-                if (ingredient[i] + 1 == ingredient[i + 1])
+                if (isBread && isLettuce && isPatty && isTopBread)
                 {
-                    // 두 수는 연속된 수
-                    isConsecutive = true;
-                }
-                else
-                {
-                    isConsecutive = false;
+                    answer++;
+                    isBread = false;
+                    isLettuce = false;
+                    isPatty = false;
+                    isTopBread = false;
+                    newIngredients.RemoveRange(firstBreadIdx, 4);
                 }
             }
-
             return answer;
         }
+
+        //public int solution(int[] ingredient)
+        //{
+        //    int answer = 0;
+        //    bool isConsecutive = false;
+
+        //    if (ingredient.Length < 4) 
+        //        return 0;
+
+        //    // ingredients 배열에서 1, 2, 3이 연속으로 있을 때만 포장을해서 answer의 카운트 증가시킨다.
+        //    for (int i = 0; i < ingredient.Length - 1; i++)
+        //    {
+        //        // 두 수가 연속일 때
+        //        if (isConsecutive)
+        //        {
+        //            // 다시 한 번 더 검사
+        //            if (ingredient[i] + 1 == ingredient[i + 1])
+        //                answer++;
+        //        }
+
+        //        if (ingredient[i] + 1 == ingredient[i + 1])
+        //        {
+        //            // 두 수는 연속된 수
+        //            isConsecutive = true;
+        //        }
+        //        else
+        //        {
+        //            isConsecutive = false;
+        //        }
+        //    }
+
+        //    return answer;
+        //}
     }
 }
