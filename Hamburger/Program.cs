@@ -21,11 +21,11 @@ namespace Hamburger
         {
             int answer = 0;
 
-            bool isBread = false;
-            bool isLettuce = false;
-            bool isPatty = false;
-            bool isTopBread = false;
-            int firstBreadIdx = 0;
+            var isBread       = false;
+            var isLettuce     = false;
+            var isPatty       = false;
+            var isTopBread    = false;
+            var firstBreadIdx = 0;
 
             var newIngredients = ingredients.ToList();
 
@@ -33,6 +33,13 @@ namespace Hamburger
             {
                 for (int i = 1; i <= newIngredients.Count - 1; i++)
                 {
+                    if (newIngredients[0] == 1)
+                        isBread = true;
+                    else if (newIngredients[0] == 2)
+                        isLettuce = true;
+                    else if (newIngredients[0] == 3)
+                        isPatty = true;
+
                     // 1, 2, 3, 1 이 연속으로 있으면
                     switch (newIngredients[i])
                     {
@@ -69,7 +76,9 @@ namespace Hamburger
                     isLettuce = false;
                     isPatty = false;
                     isTopBread = false;
-                    newIngredients.RemoveRange(firstBreadIdx, 4);
+
+                    if(newIngredients.Count > 4)
+                        newIngredients.RemoveRange(firstBreadIdx, 4);
                 }
             }
             return answer;
