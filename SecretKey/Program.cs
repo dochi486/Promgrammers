@@ -10,34 +10,37 @@ namespace SecretKey
         {
             Console.WriteLine("Hello World!");
             var solution = new Solution();
-            solution.solution("aukks", "wbqd", 5);
+            solution.solution("aefdw", "wex", 8);
         }
     }
-
 
     public class Solution
     {
         public string solution(string s, string skip, int index)
         {
-
             string answer = "";
             string abc = "abcdefghijklmnopqrstuvwxyz";
+
             var abcList = abc.ToList();
             var sList = s.ToList();
+            
+            var newAbcList = abcList.Except(skip).ToList();
 
-            for (int j = 0; j < sList.Count; j++)
+            foreach (var t in sList)
             {
-                var newAbcList = abcList.Except(skip).ToList();
-                var sFound = newAbcList.Find(x => x == sList[j]);
+                var sFound = newAbcList.Find(x => x == t);
                 var sFoundIdx = newAbcList.IndexOf(sFound);
 
-                if (newAbcList.Count <= sFoundIdx + index)
+                if (sFound > 0 && !char.IsWhiteSpace(sFound))
                 {
-                    answer += newAbcList[(sFoundIdx + index) - newAbcList.Count];
-                }
-                else
-                {
-                    answer += newAbcList[sFoundIdx + index];
+                    if (newAbcList.Count <= sFoundIdx + index)
+                    {
+                        answer += newAbcList[(sFoundIdx + index) - newAbcList.Count];
+                    }
+                    else
+                    {
+                        answer += newAbcList[sFoundIdx + index];
+                    }
                 }
             }
             return answer;

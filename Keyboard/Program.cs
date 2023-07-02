@@ -19,32 +19,84 @@ namespace Keyboard
     {
         public int[] solution(string[] keymap, string[] targets)
         {
-            var answerList = new List<int>();
+            int[] answer = new int[keymap.Length];
+            Dictionary<int, List<char>> newKeymap = new Dictionary<int, List<char>>();
 
-            if (keymap.Length < 1 || keymap.Length > 100)
-                return null;
+            // keymap에 있는 원소 중에서 
+            // keymap을 먼저 정리
+            for (int i = 0; i < keymap.Length; i++)
+            {
+                newKeymap[i] = new List<char>();
 
-            if (targets.Length < 1 || targets.Length > 100)
-                return null;
-
-            var keyList = keymap.ToList();
-
-            for (var k = 0; k < keyList.Count; k++)
-                // targets에 있는 char를 keymap에서 찾아서 (가장 가까운 걸로)
-            for (var i = 0; i < targets.Length; i++)
-            for (var j = 0; j < targets[i].Length; j++)
-                if (false == keyList[k].Contains(targets[i][j]))
+                for (int j = 0; j < keymap[i].Length; j++)
                 {
-                    answerList.Add(-1);
-                    break;
+                    newKeymap[i].Add(keymap[i][j]);
                 }
-                else
-                {
-                    // 몇 번째 인덱스인지 받아서 answer에 저장
-                    answerList.Add(keyList[k].IndexOf(targets[i][j]) + 1);
-                }
+            }
 
-            return answerList.ToArray();
+            for (int i = 0; i < newKeymap.Count; i++)
+            {
+                // targets의 원소를 찾아서
+                for (int k = 0; k < targets.Length; k++)
+                {
+                    for (int j = 0; j < targets[k].Length; j++)
+                    {
+                        var found = newKeymap[i].Find(x => x == targets[k][j]);
+                        if (found != '\0')
+                        {
+                            // 인덱스를 가져오고
+                            var foundIdx = newKeymap[i].IndexOf(found);
+
+                            // 그 인덱스의 값을 더해준다. (해당하는 keymap 배열 요소의 인덱스와 일치하게)
+                            answer[k] += foundIdx + 1;
+                        }
+                        else
+                        {
+                            answer[k] = -1;
+                        }
+
+                    }
+                }
+            }
+            
+            return answer;
         }
     }
+
+    //public class Solution
+    //{
+    //    public int[] solution(string[] keymap, string[] targets)
+    //    {
+    //        // dictionary에 최소값으로 넣어줌
+    //        var dict = new Dictionary<char, int>();
+    //        for (int i = 0; i < keymap.Length; i++)
+    //        {
+    //            string keyStr = keymap[i];
+    //            for (int k = 0; k < keyStr.Length; k++)
+    //            {
+    //                char c = keyStr[k];
+    //                dict[c] = dict.TryGetValue(c, out var value) ? Math.Min(k, value) : k;
+    //            }
+    //        }
+
+    //        // dictionary에서 검색 후 출력
+    //        int[] answer = new int[targets.Length];
+    //        for (int i = 0; i < targets.Length; i++)
+    //        {
+    //            string targetStr = targets[i];
+    //            for (int k = 0; k < targetStr.Length; k++)
+    //            {
+    //                if (!dict.TryGetValue(targetStr[k], out int index))
+    //                {
+    //                    answer[i] = -1;
+    //                    break;
+    //                }
+
+    //                answer[i] += index + 1;
+    //            }
+    //        }
+
+    //        return answer;
+    //    }
+    //}
 }
