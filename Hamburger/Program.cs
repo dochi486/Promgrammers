@@ -17,6 +17,38 @@ namespace Hamburger
 
     public class Solution
     {
+        //{
+        //    public static readonly int BREAD = 1;
+        //    public static readonly int VEGETABLE = 2;
+        //    public static readonly int MEAT = 3;
+
+        //    public int solution(int[] ingredient)
+        //    {
+        //        if (ingredient.Length < 4) return 0;
+
+        //        var ingredients = ingredient.ToList();
+
+        //        int answer = 0;
+        //        for (int i = 0; i + 3 < ingredients.Count; i++)
+        //        {
+        //            if (ingredients[i] == BREAD
+        //                && ingredients[i + 1] == VEGETABLE
+        //                && ingredients[i + 2] == MEAT
+        //                && ingredients[i + 3] == BREAD)
+        //            {
+        //                answer++;
+        //                for (int j = 0; j < 4; j++)
+        //                {
+        //                    ingredients.RemoveAt(i);
+        //                }
+        //                i = Math.Max(i - 4, -1);
+        //            }
+        //        }
+        //        return answer;
+        //    }
+        //}
+
+
         //public int solution(int[] ingredients)
         //{
         //    int answer = 0;
@@ -147,18 +179,21 @@ namespace Hamburger
                                 isBread = true;
                                 firstBreadIdx = i;
                             }
+
                             break;
                         case 2:
                             if (newIngredients[i - 1] == 1)
                             {
                                 isLettuce = true;
                             }
+
                             break;
                         case 3:
                             if (newIngredients[i - 1] == 2)
                             {
                                 isPatty = true;
                             }
+
                             break;
                     }
 
@@ -176,6 +211,7 @@ namespace Hamburger
                     }
                 }
             }
+
             return answer;
         }
 
@@ -210,6 +246,7 @@ namespace Hamburger
         //    }
 
         //    return answer;
-        //}
     }
 }
+
+

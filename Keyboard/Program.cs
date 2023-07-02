@@ -62,6 +62,48 @@ namespace Keyboard
         }
     }
 
+
+    //public class Solution
+    //{
+    //    private Dictionary<char, int> _indexes = new Dictionary<char, int>();
+
+    //    public int[] solution(string[] keymap, string[] targets)
+    //    {
+    //        var count = keymap.Length;
+    //        int stringLength = 0;
+    //        for (int i = 0; i < count; i++)
+    //        {
+    //            stringLength = keymap[i].Length;
+    //            for (int j = 0; j < stringLength; j++)
+    //            {
+    //                if (_indexes.ContainsKey(keymap[i][j])
+    //                    && _indexes[keymap[i][j]] < j) continue;
+    //                _indexes[keymap[i][j]] = j;
+    //            }
+    //        }
+
+    //        count = targets.Length;
+    //        int[] answer = new int[count];
+    //        for (int i = 0; i < count; i++)
+    //        {
+    //            answer[i] = GetIndexSum(targets[i]);
+    //        }
+    //        return answer;
+    //    }
+
+    //    private int GetIndexSum(string target)
+    //    {
+    //        int totalIndex = 0;
+    //        int stringLength = target.Length;
+    //        for (int i = 0; i < stringLength; i++)
+    //        {
+    //            if (!_indexes.ContainsKey(target[i])) return -1;
+    //            totalIndex += _indexes[target[i]] + 1;
+    //        }
+    //        return totalIndex;
+    //    }
+    //}
+
     //public class Solution
     //{
     //    public int[] solution(string[] keymap, string[] targets)
