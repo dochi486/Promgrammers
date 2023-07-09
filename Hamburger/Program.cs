@@ -191,7 +191,7 @@ namespace Hamburger
                     firstBreadIdx = i;
                     // firstBreadIdx로부터 4 범위 값이 있는지 확인해야함
                     newIngredients.RemoveRange(firstBreadIdx, 4);
-                    i = -1;
+                    i = Math.Max(i - 4, -1);
                 }
             }
             return answer;
