@@ -147,71 +147,53 @@ namespace Hamburger
         {
             int answer = 0;
 
-            var isBread = false;
-            var isLettuce = false;
-            var isPatty = false;
-            var isTopBread = false;
             var firstBreadIdx = 0;
 
             var newIngredients = ingredients.ToList();
 
-            foreach (var item in ingredients)
+            for (int i = 0; i + 3 < newIngredients.Count; i++)
             {
-                for (int i = 1; i <= newIngredients.Count - 1; i++)
+
+                // 1, 2, 3, 1 이 연속으로 있으면
+                //switch (newIngredients[i])
+                //{
+                //    case 1:
+                //        if (newIngredients[i - 1] == 3)
+                //        {
+                //            isTopBread = true;
+                //        }
+                //        else
+                //        {
+                //            isBread = true;
+                //            firstBreadIdx = i;
+                //        }
+
+                //        break;
+                //    case 2:
+                //        if (newIngredients[i - 1] == 1)
+                //        {
+                //            isLettuce = true;
+                //        }
+
+                //        break;
+                //    case 3:
+                //        if (newIngredients[i - 1] == 2)
+                //        {
+                //            isPatty = true;
+                //        }
+
+                //        break;
+                //}
+
+                if (newIngredients[i] == 1 && newIngredients[i + 1] == 2 && newIngredients[i + 2] == 3 && newIngredients[i + 3] == 1)
                 {
-                    if (newIngredients[0] == 1)
-                        isBread = true;
-                    else if (newIngredients[0] == 2)
-                        isLettuce = true;
-                    else if (newIngredients[0] == 3)
-                        isPatty = true;
-
-                    // 1, 2, 3, 1 이 연속으로 있으면
-                    switch (newIngredients[i])
-                    {
-                        case 1:
-                            if (newIngredients[i - 1] == 3)
-                            {
-                                isTopBread = true;
-                            }
-                            else
-                            {
-                                isBread = true;
-                                firstBreadIdx = i;
-                            }
-
-                            break;
-                        case 2:
-                            if (newIngredients[i - 1] == 1)
-                            {
-                                isLettuce = true;
-                            }
-
-                            break;
-                        case 3:
-                            if (newIngredients[i - 1] == 2)
-                            {
-                                isPatty = true;
-                            }
-
-                            break;
-                    }
-
-                    if (isBread && isLettuce && isPatty && isTopBread)
-                    {
-                        answer++;
-                        isBread = false;
-                        isLettuce = false;
-                        isPatty = false;
-                        isTopBread = false;
-
-                        // firstBreadIdx로부터 4 범위 값이 있는지 확인해야함
-                        if (newIngredients.Count - firstBreadIdx > 4)
-                            newIngredients.RemoveRange(firstBreadIdx, 4);
-                    }
+                    answer++;
+                    firstBreadIdx = i;
+                    // firstBreadIdx로부터 4 범위 값이 있는지 확인해야함
+                    newIngredients.RemoveRange(firstBreadIdx, 4);
+                    i = -1;
                 }
             }
-
             return answer;
         }
 
