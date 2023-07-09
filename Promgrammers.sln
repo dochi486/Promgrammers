@@ -31,6 +31,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SecretKey", "SecretKey\Secr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnightsWeapon", "KnightsWeapon\KnightsWeapon.csproj", "{751840F6-B19A-49E7-B0A2-F879CC0F6935}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Painting", "Painting\Painting.csproj", "{0D5783A4-D709-4730-A5D8-B139E727EF27}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +95,10 @@ Global
 		{751840F6-B19A-49E7-B0A2-F879CC0F6935}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{751840F6-B19A-49E7-B0A2-F879CC0F6935}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{751840F6-B19A-49E7-B0A2-F879CC0F6935}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D5783A4-D709-4730-A5D8-B139E727EF27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D5783A4-D709-4730-A5D8-B139E727EF27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D5783A4-D709-4730-A5D8-B139E727EF27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D5783A4-D709-4730-A5D8-B139E727EF27}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
