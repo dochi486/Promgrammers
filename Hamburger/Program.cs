@@ -1,16 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace Hamburger
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            Solution solution = new Solution();
-            int[] ingredients = { 1, 1, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1 };
+            var solution = new Solution();
+            int[] ingredients = {1, 1, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1};
             solution.solution(ingredients);
         }
     }
@@ -145,15 +144,13 @@ namespace Hamburger
 
         public int solution(int[] ingredients)
         {
-            int answer = 0;
+            var answer = 0;
 
             var firstBreadIdx = 0;
 
             var newIngredients = ingredients.ToList();
 
-            for (int i = 0; i + 3 < newIngredients.Count; i++)
-            {
-
+            for (var i = 0; i + 3 < newIngredients.Count; i++)
                 // 1, 2, 3, 1 이 연속으로 있으면
                 //switch (newIngredients[i])
                 //{
@@ -167,25 +164,22 @@ namespace Hamburger
                 //            isBread = true;
                 //            firstBreadIdx = i;
                 //        }
-
                 //        break;
                 //    case 2:
                 //        if (newIngredients[i - 1] == 1)
                 //        {
                 //            isLettuce = true;
                 //        }
-
                 //        break;
                 //    case 3:
                 //        if (newIngredients[i - 1] == 2)
                 //        {
                 //            isPatty = true;
                 //        }
-
                 //        break;
                 //}
-
-                if (newIngredients[i] == 1 && newIngredients[i + 1] == 2 && newIngredients[i + 2] == 3 && newIngredients[i + 3] == 1)
+                if (newIngredients[i] == 1 && newIngredients[i + 1] == 2 && newIngredients[i + 2] == 3 &&
+                    newIngredients[i + 3] == 1)
                 {
                     answer++;
                     firstBreadIdx = i;
@@ -193,7 +187,7 @@ namespace Hamburger
                     newIngredients.RemoveRange(firstBreadIdx, 4);
                     i = Math.Max(i - 4, -1);
                 }
-            }
+
             return answer;
         }
 
@@ -230,5 +224,3 @@ namespace Hamburger
         //    return answer;
     }
 }
-
-

@@ -1,14 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace _2016
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            Solution solution = new Solution();
+            var solution = new Solution();
             solution.solution(9, 21); //수요일
         }
     }
@@ -17,7 +16,6 @@ namespace _2016
     {
         public string solution(int a, int b)
         {
-
             //List<string> days = new List<string>();
             //days.Add("SUN");
             //days.Add("MON");
@@ -30,9 +28,9 @@ namespace _2016
             // b % 7 == 0 ? b % 7 : (b % 7) - 1
             //var dayString = days[b % 2];
 
-            DateTime dateTime = new DateTime(2016, a ,b);
+            var dateTime = new DateTime(2016, a, b);
             var day = dateTime.DayOfWeek;
-            string dayString = "";
+            var dayString = "";
 
             switch (day)
             {
@@ -62,8 +60,6 @@ namespace _2016
                 case DayOfWeek.Saturday:
                     dayString = "SAT";
 
-                    break;
-                default:
                     break;
             }
 

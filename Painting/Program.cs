@@ -1,16 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace Painting
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            Solution solution = new Solution();
-            solution.solution(5, 4, new[] { 1, 3});
+            var solution = new Solution();
+            solution.solution(5, 4, new[] {1, 3});
         }
     }
 
@@ -18,8 +17,8 @@ namespace Painting
     {
         public int solution(int n, int m, int[] section)
         {
-            int answer = 0;
-            int max = 0;
+            var answer = 0;
+            var max = 0;
 
             var sections = section.ToList();
 
@@ -53,7 +52,7 @@ namespace Painting
             //    {
             //        answer++;
             //    }
-                
+
             //    // section의 원소에 해당하는 wall의 인덱스를 가져오고
             //    var wallIdx = wall.IndexOf(section[j]);
             //    painted = wall[wallIdx] + m - 1;

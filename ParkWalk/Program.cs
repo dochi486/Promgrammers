@@ -1,17 +1,16 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
 
 namespace ParkWalk
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            Solution solution = new Solution();
-            string[] park = { "OOO", "OOO", "OXS", "OOO", "OOO", "OOO", "OOO" };
-            string[] routes = { "S 1", "S 3", "E 1", "W 2", "N 3", "S 3", "W 1" };
+            var solution = new Solution();
+            string[] park = {"OOO", "OOO", "OXS", "OOO", "OOO", "OOO", "OOO"};
+            string[] routes = {"S 1", "S 3", "E 1", "W 2", "N 3", "S 3", "W 1"};
             solution.solution(park, routes);
         }
     }
@@ -20,30 +19,28 @@ namespace ParkWalk
     {
         public int[] solution(string[] park, string[] routes)
         {
-            List<int> answer = new List<int>();
+            var answer = new List<int>();
 
-            int height = park.Length;
-            int width = park[0].Length;
+            var height = park.Length;
+            var width = park[0].Length;
 
-            int startH = 0;
-            int startW = 0;
+            var startH = 0;
+            var startW = 0;
 
-            string[,] parkBoard = new string[height,width];
+            var parkBoard = new string[height, width];
 
             // park는 직사각형.. 
             // 보드의 높이는 park배열의 요소 수와 같음
 
             // park 배열을 먼저 보드로 만들어 놓고
-            for (int h = 0; h < width; h++)
+            for (var h = 0; h < width; h++)
+            for (var w = 0; w < height; w++)
             {
-                for (int w = 0; w < height; w++)
+                parkBoard[w, h] = park[w][h].ToString();
+                if (park[w][h] == 'S')
                 {
-                    parkBoard[w, h] = park[w][h].ToString();
-                    if(park[w][h] == 'S')
-                    {
-                        startH = w;
-                        startW = h;
-                    }
+                    startH = w;
+                    startW = h;
                 }
             }
 
@@ -64,129 +61,122 @@ namespace ParkWalk
             // 해당 좌표에서부터 routeMap의 내용을 루프 돌면서
             foreach (var item in routes)
             {
-                int toMove = 0;
+                var toMove = 0;
                 var route = item.Split(' ');
-                int move = int.Parse(route[1]);
+                var move = int.Parse(route[1]);
 
                 // 해당 방향으로 이동할 수 있는지 확인하고
                 // 갈 수 있으면 좌표를 바꿔준다.
                 switch (route[0])
                 {
                     case "E":
+                    {
+                        // 도착 지점이 공원을 벗어나는지 확인
+                        if (startW + move > width - 1)
+                            continue;
+
+                        // 가는 길에 장애물을 마주치는지 확인
+                        do
                         {
-                            // 도착 지점이 공원을 벗어나는지 확인
-                            if (startW + move > width - 1)
-                                continue;
-
-                            // 가는 길에 장애물을 마주치는지 확인
-                            do
+                            if (parkBoard[startH, startW + toMove] != "X")
                             {
-                                if (parkBoard[startH, startW + toMove] != "X")
-                                    toMove++;
-                                else
-                                {
-                                    toMove = 0;
-                                    break;
-                                }
-
-                            } while (toMove < move);
-
-                            if (toMove == 0)
-                                continue;
-
-                            if (parkBoard[startH, startW + move] != "X")
-                            {
-                                startW += move;
+                                toMove++;
                             }
-                            break;  
-                        }
+                            else
+                            {
+                                toMove = 0;
+                                break;
+                            }
+                        } while (toMove < move);
+
+                        if (toMove == 0)
+                            continue;
+
+                        if (parkBoard[startH, startW + move] != "X") startW += move;
+                        break;
+                    }
 
                     case "W":
+                    {
+                        if (startW - move > width - 1 || startW - move < 0)
+                            continue;
+
+                        // 가는 길에 장애물을 마주치는지 확인
+                        do
                         {
-                            if (startW - move > width - 1 || startW - move < 0)
-                                continue;
-
-                            // 가는 길에 장애물을 마주치는지 확인
-                            do
+                            if (parkBoard[startH, startW - toMove] != "X")
                             {
-                                if (parkBoard[startH, startW - toMove] != "X")
-                                    toMove++;
-                                else
-                                {
-                                    toMove = 0;
-                                    break;
-                                }
-
-                            } while (toMove < move);
-
-                            if (toMove == 0)
-                                continue;
-
-
-                            if (parkBoard[startH, startW - move] != "X")
-                            {
-                                startW -= move;
+                                toMove++;
                             }
-                            break;
-                        }
+                            else
+                            {
+                                toMove = 0;
+                                break;
+                            }
+                        } while (toMove < move);
+
+                        if (toMove == 0)
+                            continue;
+
+
+                        if (parkBoard[startH, startW - move] != "X") startW -= move;
+                        break;
+                    }
 
                     case "N":
+                    {
+                        if (startH - move > height - 1 || startH - move < 0)
+                            continue;
+
+                        // 가는 길에 장애물을 마주치는지 확인
+                        do
                         {
-                            if (startH - move > height - 1 || startH - move < 0)
-                                continue;
-
-                            // 가는 길에 장애물을 마주치는지 확인
-                            do
+                            if (parkBoard[startH - toMove, startW] != "X")
                             {
-                                if (parkBoard[startH - toMove, startW] != "X")
-                                    toMove++;
-                                else
-                                {
-                                    toMove = 0;
-                                    break;
-                                }
-
-                            } while (toMove < move);
-
-                            if (toMove == 0)
-                                continue;
-
-                            if (parkBoard[startH - move, startW] != "X")
-                            {
-                                startH -= move;
+                                toMove++;
                             }
-                            break;
-                        }
+                            else
+                            {
+                                toMove = 0;
+                                break;
+                            }
+                        } while (toMove < move);
+
+                        if (toMove == 0)
+                            continue;
+
+                        if (parkBoard[startH - move, startW] != "X") startH -= move;
+                        break;
+                    }
 
                     case "S":
+                    {
+                        if (startH + move > height - 1)
+                            continue;
+
+                        // 가는 길에 장애물을 마주치는지 확인
+                        do
                         {
-                            if (startH + move > height - 1)
-                                continue;
-
-                            // 가는 길에 장애물을 마주치는지 확인
-                            do
+                            if (parkBoard[startH + toMove, startW] != "X")
                             {
-                                if (parkBoard[startH + toMove, startW] != "X")
-                                    toMove++;
-                                else
-                                {
-                                    toMove = 0;
-                                    break;
-                                }
-
-                            } while (toMove < move);
-
-                            if (toMove == 0)
-                                continue;
-
-                            if (parkBoard[startH + move, startW] != "X")
-                            {
-                                startH += move;
+                                toMove++;
                             }
-                            break;
-                        }
+                            else
+                            {
+                                toMove = 0;
+                                break;
+                            }
+                        } while (toMove < move);
+
+                        if (toMove == 0)
+                            continue;
+
+                        if (parkBoard[startH + move, startW] != "X") startH += move;
+                        break;
+                    }
                 }
             }
+
             answer.Add(startH);
             answer.Add(startW);
 

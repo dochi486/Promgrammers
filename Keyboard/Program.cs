@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Keyboard
 {
@@ -10,7 +9,7 @@ namespace Keyboard
         {
             Console.WriteLine("Hello World!");
             var solution = new Solution();
-            solution.solution(new[] { "ABACD", "BCEFD" }, new[] { "ABCD", "AABB" });
+            solution.solution(new[] {"ABACD", "BCEFD"}, new[] {"ABCD", "AABB"});
         }
     }
 
@@ -19,45 +18,38 @@ namespace Keyboard
     {
         public int[] solution(string[] keymap, string[] targets)
         {
-            int[] answer = new int[keymap.Length];
-            Dictionary<int, List<char>> newKeymap = new Dictionary<int, List<char>>();
+            var answer = new int[keymap.Length];
+            var newKeymap = new Dictionary<int, List<char>>();
 
             // keymap에 있는 원소 중에서 
             // keymap을 먼저 정리
-            for (int i = 0; i < keymap.Length; i++)
+            for (var i = 0; i < keymap.Length; i++)
             {
                 newKeymap[i] = new List<char>();
 
-                for (int j = 0; j < keymap[i].Length; j++)
-                {
-                    newKeymap[i].Add(keymap[i][j]);
-                }
+                for (var j = 0; j < keymap[i].Length; j++) newKeymap[i].Add(keymap[i][j]);
             }
 
-            for (int i = 0; i < newKeymap.Count; i++)
-            {
+            for (var i = 0; i < newKeymap.Count; i++)
                 // targets의 원소를 찾아서
-                for (int k = 0; k < targets.Length; k++)
+            for (var k = 0; k < targets.Length; k++)
+            for (var j = 0; j < targets[k].Length; j++)
+            {
+                var found = newKeymap[i].Find(x => x == targets[k][j]);
+                if (found != '\0')
                 {
-                    for (int j = 0; j < targets[k].Length; j++)
-                    {
-                        var found = newKeymap[i].Find(x => x == targets[k][j]);
-                        if (found != '\0')
-                        {
-                            // 인덱스를 가져오고
-                            var foundIdx = newKeymap[i].IndexOf(found);
+                    // 인덱스를 가져오고
+                    var foundIdx = newKeymap[i].IndexOf(found);
 
-                            // 그 인덱스의 값을 더해준다. (해당하는 keymap 배열 요소의 인덱스와 일치하게)
-                            answer[k] += foundIdx + 1;
-                        }
-                        else
-                        {
-                            answer[k] = -1;
-                        }
-                    }
+                    // 그 인덱스의 값을 더해준다. (해당하는 keymap 배열 요소의 인덱스와 일치하게)
+                    answer[k] += foundIdx + 1;
+                }
+                else
+                {
+                    answer[k] = -1;
                 }
             }
-            
+
             return answer;
         }
     }

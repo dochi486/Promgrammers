@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace SecretKey
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
             var solution = new Solution();
@@ -18,12 +17,12 @@ namespace SecretKey
     {
         public string solution(string s, string skip, int index)
         {
-            string answer = "";
-            string abc = "abcdefghijklmnopqrstuvwxyz";
+            var answer = "";
+            var abc = "abcdefghijklmnopqrstuvwxyz";
 
             var abcList = abc.ToList();
             var sList = s.ToList();
-            
+
             var newAbcList = abcList.Except(skip).ToList();
 
             foreach (var t in sList)
@@ -35,7 +34,7 @@ namespace SecretKey
                 {
                     if (sFoundIdx + index >= newAbcList.Count)
                     {
-                        int temp = sFoundIdx + index;
+                        var temp = sFoundIdx + index;
 
                         do
                         {
@@ -50,6 +49,7 @@ namespace SecretKey
                     }
                 }
             }
+
             return answer;
         }
     }

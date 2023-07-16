@@ -3,15 +3,15 @@ using System.Collections.Generic;
 
 namespace TermsOfPrivacy
 {
-    class Privacy
+    internal class Privacy
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            Solution solution = new Solution();
-            string today = "2020.01.01";
-            string[] terms = { "Z 3", "D 5" };
-            string[] privacies = { "2019.01.01 D", "2019.11.15 Z", "2019.08.02 D", "2019.07.01 D", "2018.12.28 Z" };
+            var solution = new Solution();
+            var today = "2020.01.01";
+            string[] terms = {"Z 3", "D 5"};
+            string[] privacies = {"2019.01.01 D", "2019.11.15 Z", "2019.08.02 D", "2019.07.01 D", "2018.12.28 Z"};
             solution.solution(today, terms, privacies);
         }
     }
@@ -23,39 +23,30 @@ namespace TermsOfPrivacy
 
         public int[] solution(string today, string[] terms, string[] privacies)
         {
-            List<int> indexesToDelete = new List<int>();
-            Dictionary<string, List<string>> privacyTerms = new Dictionary<string, List<string>>();
-            Dictionary<string, string> termsConditions = new Dictionary<string, string>();
+            var indexesToDelete = new List<int>();
+            var privacyTerms = new Dictionary<string, List<string>>();
+            var termsConditions = new Dictionary<string, string>();
 
             // terms 유효기간
             // 각 조항의 키 - 기간 딕셔너리
-            for (int i = 0; i < terms.Length; i++)
+            for (var i = 0; i < terms.Length; i++)
             {
                 var term = terms[i].Split(" ");
                 // 조항 - 개월 수
                 if (termsConditions.ContainsKey(term[0]))
-                {
                     continue;
-                }
-                else
-                {
-                    termsConditions.Add(term[0], term[1]);
-                }
+                termsConditions.Add(term[0], term[1]);
             }
 
-            List<string> dates = new List<string>();
+            var dates = new List<string>();
             // privacies 개인정보
-            for (int i = 0; i < privacies.Length; i++)
+            for (var i = 0; i < privacies.Length; i++)
             {
                 var privacy = privacies[i].Split(" ");
                 // 조항 - 날짜
-                if (!privacyTerms.ContainsKey(privacy[1]))
-                {
-                    privacyTerms[privacy[1]] = new List<string>();
-                }
+                if (!privacyTerms.ContainsKey(privacy[1])) privacyTerms[privacy[1]] = new List<string>();
 
                 privacyTerms[privacy[1]].Add(privacy[0]);
-                
             }
 
             // 오늘 날짜를 구해서 각각 연도, 월, 일로 가지고 있고
@@ -64,9 +55,9 @@ namespace TermsOfPrivacy
             var month = int.Parse(date[1]);
             var day = int.Parse(date[2]);
 
-            int elapsedDays = 0;
-            int conditionDays = 0;
-            int index = 0;
+            var elapsedDays = 0;
+            var conditionDays = 0;
+            var index = 0;
 
 
             // 여기 맵을 루프돌 게 아니라 배열 privacies를 돌아야 인덱스가 딱 맞는다
@@ -88,7 +79,7 @@ namespace TermsOfPrivacy
 
             //        if (conditionDays <= elapsedDays)
             //            indexesToDelete.Add(index + 1);
-                    
+
             //        index++;
             //    }
             //}
@@ -104,11 +95,12 @@ namespace TermsOfPrivacy
                 var contractSignedMonth = int.Parse(contractSignedDate[1]);
                 var contractSignedDay = int.Parse(contractSignedDate[2]);
 
-                elapsedDays = (year - contractSignedYear) * MONTH * DAY + (month - contractSignedMonth) * DAY + (day - contractSignedDay);
+                elapsedDays = (year - contractSignedYear) * MONTH * DAY + (month - contractSignedMonth) * DAY +
+                              (day - contractSignedDay);
 
                 if (conditionDays <= elapsedDays)
                     indexesToDelete.Add(index + 1);
-                
+
                 index++;
             }
 

@@ -4,14 +4,14 @@ using System.Linq;
 
 namespace Promgrammers
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            Solution solution = new Solution();
-            string[] id_list = { "muzi", "frodo", "apeach", "neo" };
-            string[] report = { "muzi frodo", "apeach frodo", "frodo neo", "muzi neo", "apeach muzi" };
+            var solution = new Solution();
+            string[] id_list = {"muzi", "frodo", "apeach", "neo"};
+            string[] report = {"muzi frodo", "apeach frodo", "frodo neo", "muzi neo", "apeach muzi"};
             solution.solution(id_list, report, 2);
         }
     }
@@ -20,34 +20,26 @@ namespace Promgrammers
     {
         public int[] solution(string[] id_list, string[] report, int k)
         {
-            int[] answer = new int[] { };
+            int[] answer = { };
 
-            Dictionary<string, List<string>> userContainer = new Dictionary<string, List<string>>();
-            Dictionary<string, bool> allReportedUser = new Dictionary<string, bool>();
+            var userContainer = new Dictionary<string, List<string>>();
+            var allReportedUser = new Dictionary<string, bool>();
 
-            for (int i = 0; i < report.Length; i++)
+            for (var i = 0; i < report.Length; i++)
             {
                 var users = report[i].Split(" ");
-                if (!userContainer.ContainsKey(users[0]))
-                {
-                    userContainer[users[0]] = new List<string>();
-                }
+                if (!userContainer.ContainsKey(users[0])) userContainer[users[0]] = new List<string>();
 
                 // 중복 체크
-                if (userContainer[users[0]].Contains(users[1]))
-                {
-                    continue;
-                }
-                else
-                {
-                    userContainer[users[0]].Add(users[1]);
-                    allReportedUser.Add(users[1], true);
-                }
+                if (userContainer[users[0]].Contains(users[1])) continue;
+
+                userContainer[users[0]].Add(users[1]);
+                allReportedUser.Add(users[1], true);
             }
 
 
             // k번 이상 신고 받은 유저는 활동이 정지된다.
-            List<string> blockedUser = new List<string>();
+            var blockedUser = new List<string>();
 
             // 정지 당한 유저만 따로 리스트에 정리...
             //for (int i = 0; i < allReportedUser.Count; i++)
@@ -94,18 +86,16 @@ namespace Promgrammers
             //}
 
             var sortedBlockList = blockedUser.Distinct().ToList();
-            List<int> answerList = new List<int>();
-            int mailCount = 0;
+            var answerList = new List<int>();
+            var mailCount = 0;
 
 
-
-            for (int i = 0; i < id_list.Length; i++)
+            for (var i = 0; i < id_list.Length; i++)
             {
                 mailCount = 0;
 
                 // 정지 당한 목록 순회
-                for (int j = 0; j < sortedBlockList.Count; j++)
-                {
+                for (var j = 0; j < sortedBlockList.Count; j++)
                     // reporter가 신고한 사람이 정지 당했는지 확인
                     if (userContainer.ContainsKey(id_list[i]))
                     {
@@ -113,7 +103,7 @@ namespace Promgrammers
                         if (element != null)
                             mailCount++;
                     }
-                }
+
                 answerList.Add(mailCount);
             }
 

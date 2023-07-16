@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace KnightsWeapon
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            Solution solution = new Solution();
+            var solution = new Solution();
             solution.solution(18, 3, 2);
         }
     }
@@ -18,16 +17,13 @@ namespace KnightsWeapon
     {
         public int solution(int number, int limit, int power)
         {
-            int answer = 0;
-            List<int> divisorCount = new List<int>();
-            List<int> knights = new List<int>();
+            var answer = 0;
+            var divisorCount = new List<int>();
+            var knights = new List<int>();
 
             // 기사의 일련번호 number만큼의 기사수를 담는 컨테이너
-            for (int i = 1; i <= number; i++)
-            {
-                knights.Add(i);
-            }
-            
+            for (var i = 1; i <= number; i++) knights.Add(i);
+
             // 자신의 번호의 약수 개수에 해당하는 공격력을 가진 무기를 구매
             foreach (var t in knights)
             {
@@ -36,7 +32,7 @@ namespace KnightsWeapon
             }
 
             // 공격력의 제한수치가 있고 제한수치보다 높은 공격력의 무기는 구매할 수 없음
-            for (int i = 0; i < divisorCount.Count; i++)
+            for (var i = 0; i < divisorCount.Count; i++)
             {
                 if (divisorCount[i] > limit)
                     divisorCount[i] = power;
@@ -52,9 +48,8 @@ namespace KnightsWeapon
 
         public int GetDivisors(int number)
         {
-            int count = 0;
-            for (int i = 1; i * i <= number; i++)
-            {
+            var count = 0;
+            for (var i = 1; i * i <= number; i++)
                 if (number % i == 0)
                 {
                     count++;
@@ -62,9 +57,8 @@ namespace KnightsWeapon
                     if (number / i != i)
                         count++;
                 }
-            }
+
             return count;
         }
     }
-    
 }

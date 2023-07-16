@@ -1,17 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace PE
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            Solution solution = new Solution();
-            int[] lost = new int[] { 1, 2 };
-            int[] reserve = new int[] { 2, 3 };
+            var solution = new Solution();
+            int[] lost = {1, 2};
+            int[] reserve = {2, 3};
             solution.solution(3, lost, reserve);
         }
     }
@@ -20,7 +19,7 @@ namespace PE
     {
         public int solution(int n, int[] lost, int[] reserve)
         {
-            int answer = 0;
+            var answer = 0;
 
             if (n < 2 || n > 30)
                 return 0;
@@ -37,9 +36,7 @@ namespace PE
 
 
             // reserve에 있는 번호만 사용 가능
-            for (int j = 0; j < newLost.Count; j++)
-            {
-
+            for (var j = 0; j < newLost.Count; j++)
                 if (newReserve.Contains(newLost[j] - 1))
                 {
                     answer++;
@@ -50,7 +47,6 @@ namespace PE
                     answer++;
                     newReserve.Remove(newLost[j] + 1);
                 }
-            }
 
             answer = n - (newLost.Count - answer);
 

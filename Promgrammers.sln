@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnightsWeapon", "KnightsWea
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Painting", "Painting\Painting.csproj", "{0D5783A4-D709-4730-A5D8-B139E727EF27}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaxAndMin", "MaxAndMin\MaxAndMin.csproj", "{D383A894-4682-4028-B0E6-F84A62F22E7B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -99,6 +101,10 @@ Global
 		{0D5783A4-D709-4730-A5D8-B139E727EF27}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0D5783A4-D709-4730-A5D8-B139E727EF27}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0D5783A4-D709-4730-A5D8-B139E727EF27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D383A894-4682-4028-B0E6-F84A62F22E7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D383A894-4682-4028-B0E6-F84A62F22E7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D383A894-4682-4028-B0E6-F84A62F22E7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D383A894-4682-4028-B0E6-F84A62F22E7B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
