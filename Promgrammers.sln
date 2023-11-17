@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.32228.343
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.33027.108
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Promgrammers", "Promgrammers\Promgrammers.csproj", "{AED2656B-F97C-46DC-B9D7-8343B66F38BD}"
 EndProject
@@ -29,11 +29,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "2016", "2016\2016.csproj", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SecretKey", "SecretKey\SecretKey.csproj", "{0EAA22D4-3D21-40E2-9850-7EE31CD991F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnightsWeapon", "KnightsWeapon\KnightsWeapon.csproj", "{751840F6-B19A-49E7-B0A2-F879CC0F6935}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KnightsWeapon", "KnightsWeapon\KnightsWeapon.csproj", "{751840F6-B19A-49E7-B0A2-F879CC0F6935}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Painting", "Painting\Painting.csproj", "{0D5783A4-D709-4730-A5D8-B139E727EF27}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Painting", "Painting\Painting.csproj", "{0D5783A4-D709-4730-A5D8-B139E727EF27}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaxAndMin", "MaxAndMin\MaxAndMin.csproj", "{D383A894-4682-4028-B0E6-F84A62F22E7B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaxAndMin", "MaxAndMin\MaxAndMin.csproj", "{D383A894-4682-4028-B0E6-F84A62F22E7B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriorityQueue", "PriorityQueue\PriorityQueue.csproj", "{73805AF1-C9A1-4C15-BB4D-D576A31F69DF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -105,6 +107,10 @@ Global
 		{D383A894-4682-4028-B0E6-F84A62F22E7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D383A894-4682-4028-B0E6-F84A62F22E7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D383A894-4682-4028-B0E6-F84A62F22E7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73805AF1-C9A1-4C15-BB4D-D576A31F69DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73805AF1-C9A1-4C15-BB4D-D576A31F69DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73805AF1-C9A1-4C15-BB4D-D576A31F69DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73805AF1-C9A1-4C15-BB4D-D576A31F69DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
