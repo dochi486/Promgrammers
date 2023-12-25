@@ -4,20 +4,15 @@
 
 using namespace std;
 
-int solution(vector<int> dot) {
-    int answer = 0;
 
-    int x = dot[0], y = dot[1];
-    if(x > 0) {
-        if(y > 0) return 1;
-        else return 4;
-    }
-    else {
-        if(y > 0) return 2;
-        else return 3;
-    }
+string solution(string my_string, string letter)
+{
+    string answer = "";
 
-    return answer;
+    // 문자열 my_string과 문자 letter이 매개변수로 주어집니다. my_string에서 letter를 제거한 문자열을 return하도록 solution 함수를 완성해주세요.
+
+    my_string.erase(remove(my_string.begin(),my_string.end(), letter[0]),my_string.end());
+    return my_string;
 }
 
 int main()
