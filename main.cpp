@@ -4,16 +4,17 @@
 
 using namespace std;
 
-string solution(string my_string, int n)
-{
-    string answer = "";
+int solution(vector<int> dot) {
+    int answer = 0;
 
-    for (int i = 0; i < my_string.size(); ++i)
-    {
-        for (int j = 0; j < n; ++j)
-        {
-            answer += (my_string[i]);
-        }
+    int x = dot[0], y = dot[1];
+    if(x > 0) {
+        if(y > 0) return 1;
+        else return 4;
+    }
+    else {
+        if(y > 0) return 2;
+        else return 3;
     }
 
     return answer;
@@ -22,8 +23,6 @@ string solution(string my_string, int n)
 int main()
 {
     std::cout << "Hello, World!" << std::endl;
-
-    solution("hello", 3);
 
     return 0;
 }
