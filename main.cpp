@@ -1,20 +1,20 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
 
-
-vector<int> solution(vector<int> num_list)
+string solution(string my_string, int n)
 {
-    vector<int> answer;
+    string answer = "";
 
-    // 원소의 숫자를 거꾸로
-    for (int i = num_list.size() - 1; i < num_list.size(); --i)
+    for (int i = 0; i < my_string.size(); ++i)
     {
-        answer.push_back(num_list[i]);
+        for (int j = 0; j < n; ++j)
+        {
+            answer += (my_string[i]);
+        }
     }
-
-    //reverse(num_list.begin(), num_list.end());
 
     return answer;
 }
@@ -23,7 +23,7 @@ int main()
 {
     std::cout << "Hello, World!" << std::endl;
 
-    solution({1, 2, 3, 4, 5});
+    solution("hello", 3);
 
     return 0;
 }
