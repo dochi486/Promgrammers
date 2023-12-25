@@ -1,23 +1,31 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <cmath>
 
 using namespace std;
 
 
-string solution(string my_string, string letter)
-{
+
+string solution(string my_string) {
     string answer = "";
 
-    // 문자열 my_string과 문자 letter이 매개변수로 주어집니다. my_string에서 letter를 제거한 문자열을 return하도록 solution 함수를 완성해주세요.
+    string vowels = "aeiou";
 
-    my_string.erase(remove(my_string.begin(),my_string.end(), letter[0]),my_string.end());
-    return my_string;
+    for (int i = 0; i < my_string.size(); ++i) {
+        if(my_string.find(vowels)){
+            
+        }
+    }
+
+    return answer;
 }
 
 int main()
 {
     std::cout << "Hello, World!" << std::endl;
+
+    solution("aAb1B2cC34oOp");
 
     return 0;
 }
